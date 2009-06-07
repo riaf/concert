@@ -1,0 +1,39 @@
+<rt:extends href="index.html" />
+
+<rt:block name="page_title">UPLOAD - Concert</rt:block>
+
+<rt:block name="main_contents">
+
+			<div class="post" style="padding-top: 57px;">
+				<h2 class="title">新規投稿</h2>
+				<h3 class="date">自分が作ったステージを公開</h3>
+				<div class="entry">
+
+    <form action="{$rhaco.url('upload')}" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="__concert_key" value="0" />
+        <p>お名前、タイトル、ステージのHTMLはすべて入力してください</p>
+        <label for="author">投稿者のお名前(*)：<input type="text" name="author" /></label>
+        <label for="title">ステージのタイトル(*)：<input type="text" name="title" /></label>
+
+        <label for="stage">ステージのHTML(*)：<input type="file" name="stage" /></label>
+
+        <label><input type="submit" value="みんなに公開する" /></label>
+
+
+        <p>画像のアップロードは、必要ありません。<br />画像も改造した場合にアップロードしてください。</p>
+        <label for="img_title">タイトル画像<input type="file" name="img_title" /></label>
+        <label for="img_ending">エンディング画像<input type="file" name="img_ending" /></label>
+        <label for="img_gameover">ゲームオーバー画像<input type="file" name="img_gameover" /></label>
+        <label for="img_pattern">キャラクターパターン画像<input type="file" name="img_pattern" /></label>
+        <label for="img_chizu">地図画像<input type="file" name="img_chizu" /></label>
+
+        <label><input type="submit" value="みんなに公開する" /></label>
+    </form>
+
+				</div>
+				<p class="meta"><a href="{$rhaco.url()}" class="more">ステージリストはこちらから</a></p>
+			</div>
+
+
+</rt:block>
+

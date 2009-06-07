@@ -1,0 +1,27 @@
+<project rhacover="1.6.1" version="2.0.0" name="concert" pathinfo="index.php" xmlns="http://rhaco.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://rhaco.org http://m.rhaco.org/xsd/project_1_6_x.xsd">
+    <database name="concert">
+        <table name="stage">
+            <column name="id" type="serial" />
+            <column name="title" type="string" size="60" require="true" />
+            <column name="author" type="string" size="30" require="true" />
+            <column name="user_id" type="integer" default="0" />
+            <column name="ctime" type="timestamp" default="sysdate" />
+        </table>
+        <table name="comment">
+            <column name="id" type="serial" />
+            <column name="stage_id" type="integer" require="true" reference="stage.id" />
+            <column name="name" type="string" size="30" default="名無しさん" />
+            <column name="message" type="text" size="1000" require="true" />
+            <column name="ctime" type="timestamp" default="sysdate" />
+        </table>
+        <table name="category">
+            <column name="id" type="serial" />
+            <column name="name" type="string" size="30" require="true" />
+        </table>
+        <table name="stage_category">
+            <column name="id" type="serial" />
+            <column name="stage_id" type="integer" require="true" reference="stage.id" />
+            <column name="category_id" type="integer" require="true" reference="category.id" />
+        </table>
+    </database>
+</project>

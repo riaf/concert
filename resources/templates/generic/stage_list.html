@@ -1,0 +1,38 @@
+<rt:extends href="../index.html" />
+
+<rt:block name="main_contents">
+			<div class="post" style="padding-top: 57px;">
+				<h2 class="title">新規投稿</h2>
+				<h3 class="date">自分が作ったステージを公開</h3>
+				<div class="entry">
+					<p>自分が作った自慢の正男を公開してみんなで遊ぼう！</p>
+					<p>もちろん、オリジナルの画像を使用した正男も公開できます。</p>
+				</div>
+				<p class="meta"><a href="{$rhaco.url('upload')}" class="more">アップロードはこちらから</a></p>
+			</div>
+
+			<div class="post">
+				<h2 class="title">ステージリスト</h2>
+				<h3 class="date">みんなが作ったステージで遊ぶ！</h3>
+				<div class="entry">
+
+    <table class="list">
+        <tr>
+            <th>ステージ名(クリックすると遊べます)</th>
+            <th>投稿者</th>
+            <th>投稿日</th>
+        </tr>
+    <rt:loop param="object_list" var="object">
+        <tr>
+            <td><a href="{$rhaco.url('play')}/{$object.id}">{$object.title}</a></td>
+            <td>{$object.author}</td>
+            <td align="right">{$f.dateformat($object.ctime)}</td>
+        </tr>
+    </rt:loop>
+    </table>
+
+				</div>
+				<p class="meta"><rt:pager /></p>
+			</div>
+
+</rt:block>

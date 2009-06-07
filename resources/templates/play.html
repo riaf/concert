@@ -1,0 +1,42 @@
+<rt:extends href="index.html" />
+
+<rt:block name="page_title">{$object.title} - Concert</rt:block>
+
+<rt:block name="main_contents">
+<div class="post" style="padding-top: 57px;">
+	<h2 class="title">{$object.title}</h2>
+	<h3 class="date">{$object.author}</h3>
+	<div class="entry">
+	  <applet code="MasaoConstruction" width="512" height="320" archive="{$rhaco.url('mc_c.zip')}">
+      <rt:loop param="stage_data" var="p">
+        <param name="{$p['name']}" value="{$p['value']}" />
+      </rt:loop>
+    </applet>
+	</div>
+	<p class="meta"><a href="#comment" class="more">コメントする</a></p>
+</div>
+
+<div class="post comment">
+  <h2 class="title">コメント</h2>
+  <h3 class="date">アドバイス・感想など</h3>
+  <div class="entry" id="comments">
+    <rt:loop param="comments" var="comment">
+    <div class="comment">
+      <blockquote>{$comment.message}</blockquote>
+      <p>{$comment.name} - {$comment.formatCtime()}</p>
+    </div>
+    </rt:loop>
+  </div>
+  <div>
+    <form action="{$rhaco.url('play')}/{$object.id}" method="post">
+      <input type="hidden" name="__concert_key" value="0" />
+      <label for="name">なまえ</label>
+      <input type="text" name="name" size="30" />
+      <label for="message">コメント</label>
+      <textarea cols="40" rows="7" name="message"></textarea>
+      <input type="submit" value="コメントする" />
+    </form>
+  </div>
+  <p class="meta"><a href="{$rhaco.url()}" class="more">リストに戻る</a></p>
+</div>
+</rt:block>
